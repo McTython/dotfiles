@@ -17,9 +17,11 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReversedHistor
 Import-Module posh-git
 oh-my-posh --init --shell pwsh --config "C:\\Users\Administrator\.config\powershell\maxim.omp.json" | Invoke-Expression
 
+# Remove built-in aliases
+Remove-Alias gp -Force -ErrorAction SilentlyContinue
+
 # Alias
 Set-Alias ll ls
-Set-Alias g git
 Set-Alias grep findstr
 Set-Alias touch New-Item
 Set-Alias c clear
@@ -32,20 +34,52 @@ function which ($command) {
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
+function g {
+    git $args
+  }
+
 function ga {
-    git add .
+    git add $args
 }
 
-function gcom {
-    param (
-        [string]$message
-    )
-    git commit -m $message
+function gaa {
+	git add --all $args
 }
 
-function gpush {
-  git push
+function gb {
+	git branch $args
 }
+
+function gc {
+    git commit -m $args
+}
+
+function gf {
+    git fetch $args
+  }
+
+function gpsup {
+	$CurrentBranch = Get-Git-CurrentBranch
+
+	git push --set-upstream origin $CurrentBranch
+}
+
+function gcb {
+    git checkout -b $args
+  }
+
+function gp {
+  git push $args
+}
+
+function gr {
+	git remote $args
+}
+
+function gra {
+	git remote add $args
+}
+
 
 function e {
  exit 
