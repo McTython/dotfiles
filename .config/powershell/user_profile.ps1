@@ -19,6 +19,7 @@ oh-my-posh --init --shell pwsh --config "C:\\Users\Administrator\.config\powersh
 
 # Remove built-in aliases
 Remove-Alias gp -Force -ErrorAction SilentlyContinue
+Remove-Alias gc -Force -ErrorAction SilentlyContinue
 
 # Alias
 Set-Alias ll ls
@@ -80,14 +81,10 @@ function gra {
 	git remote add $args
 }
 
-
 function e {
- exit 
+ explorer $args
 }
 
-function ex {
-	param (
-		[string]$message
-		)
-	explorer $message
-}
+function q {
+    exit
+  }

@@ -4,7 +4,12 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-keymap.set("n", "+", "<C-a>")
+keymap.set("n", "<Leader>p", "0p")
+keymap.set("n", "<Leaer>P", "0P")
+keymap.set("v", "<Leader>p", "0p")
+keymap.set("n", "<Leader>c", "_C")
+keymap.set("v", "<Leader>d", "_dd")
+keymap.set("n", "<Leader>d", "_dd")
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
@@ -49,7 +54,13 @@ keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
+keymap.set("i", "jj", "<Esc>")
+
 -- Diagnostics
 keymap.set("n", "<C-j>", function()
   vim.diagnostic.goto_next()
 end, opts)
+
+keymap.set("n", "<leader>i", function()
+  require("craftzdog.lsp").toggleInlayHints()
+end)

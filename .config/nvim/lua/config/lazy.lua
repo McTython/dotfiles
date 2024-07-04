@@ -13,6 +13,8 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = {
       colorscheme = "solarized-osaka",
     } },
+    { "folke/neodev.nvim", opts = {} },
+    { "andweeb/presence.nvim" },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
