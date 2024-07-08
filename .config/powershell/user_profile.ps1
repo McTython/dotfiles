@@ -88,3 +88,7 @@ function e {
 function q {
     exit
   }
+
+function .. {
+  cd ..
+}
